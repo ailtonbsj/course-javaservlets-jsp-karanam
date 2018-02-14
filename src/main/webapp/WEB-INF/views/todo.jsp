@@ -8,6 +8,7 @@
 <title>Todos</title>
 </head>
 <body>
+<h1>Welcome ${name}</h1>
 <p>Your Todo's are:</p>
 <ol>
 	<c:forEach items="${todos}" var="todo">
