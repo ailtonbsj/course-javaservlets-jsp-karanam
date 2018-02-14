@@ -16,5 +16,10 @@ My First JSP! ${name}
 Date date = new Date();
 %>
 <div>The current date is <%= date %></div>
+<form action="/login.do" method="post">
+Enter your name <input type="text" name="name">
+Enter your pass <input type="password" name="pass">
+<input type="submit" value="Login">
+</form>
 </body>
 </html>
