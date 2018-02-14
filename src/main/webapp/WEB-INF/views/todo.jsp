@@ -4,10 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>My First JSP</title>
+<title>Todos</title>
 </head>
 <body>
-<h1>Welcome! ${name}!</h1>
 <p>Your Todo's are:</p>
 <p>${todos}</p>
 </body>

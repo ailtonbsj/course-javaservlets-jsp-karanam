@@ -1,7 +1,6 @@
-package com.in28minutes;
+package com.in28minutes.login;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,20 +10,12 @@ import javax.servlet.http.HttpServletResponse;
 @SuppressWarnings("serial")
 @WebServlet(urlPatterns = "/login.do")
 public class LoginServlet extends HttpServlet {
-
-	/*
-	 * You need access your browser:
-	 * http://localhost:8080/?name=Jose+Ailton
-	 */
 	
-	private UserValidationService service = new UserValidationService();
+	private LoginService userValidationService = new LoginService();
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		String name = request.getParameter("name");
-		request.setAttribute("name", name);
-				
+		
 		request.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request, response);
 	}
 	
@@ -34,12 +25,10 @@ public class LoginServlet extends HttpServlet {
 		String name = request.getParameter("name");
 		String pass = request.getParameter("pass");
 		
-		boolean isUserValid = service.isUserValid(name, pass);
+		boolean isUserValid = userValidationService.isUserValid(name, pass);
 		
 		if(isUserValid) {
-			request.setAttribute("name", name);
-			request.setAttribute("pass", pass);
-			request.getRequestDispatcher("/WEB-INF/views/welcome.jsp").forward(request, response);
+			response.sendRedirect("/todo.do");
 		} else {
 			request.setAttribute("errorMessage", "Invalid Credentials!");
 			request.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request, response);
