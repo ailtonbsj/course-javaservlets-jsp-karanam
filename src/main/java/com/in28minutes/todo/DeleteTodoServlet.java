@@ -9,21 +9,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @SuppressWarnings("serial")
-@WebServlet(urlPatterns = "/todo.do")
-public class TodoServlet extends HttpServlet {
+@WebServlet(urlPatterns = "/delete-todo.do")
+public class DeleteTodoServlet extends HttpServlet {
 
 	private TodoService todoService = new TodoService();
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.setAttribute("todos", todoService.retrieveTodos());
-		request.getRequestDispatcher("/WEB-INF/views/todo.jsp").forward(request, response);
-	}
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		String newTodo = request.getParameter("todo");
-		todoService.addTodo(new Todo(newTodo));
+		todoService.deleteTodo(new Todo(request.getParameter("todo")));
 		response.sendRedirect("/todo.do");
 	}
 }
