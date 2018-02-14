@@ -16,6 +16,8 @@ public class LoginServlet extends HttpServlet {
 	 * You need access your browser:
 	 * http://localhost:8080/?name=Jose+Ailton
 	 */
+	
+	private UserValidationService service = new UserValidationService();
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -30,10 +32,17 @@ public class LoginServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		String name = request.getParameter("name");
-		request.setAttribute("name", name);
 		String pass = request.getParameter("pass");
-		request.setAttribute("pass", pass);
 		
-		request.getRequestDispatcher("/WEB-INF/views/welcome.jsp").forward(request, response);
+		boolean isUserValid = service.isUserValid(name, pass);
+		
+		if(isUserValid) {
+			request.setAttribute("name", name);
+			request.setAttribute("pass", pass);
+			request.getRequestDispatcher("/WEB-INF/views/welcome.jsp").forward(request, response);
+		} else {
+			request.setAttribute("errorMessage", "Invalid Credentials!");
+			request.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request, response);
+		}
 	}
 }

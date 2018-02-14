@@ -7,6 +7,6 @@
 <title>My First JSP</title>
 </head>
 <body>
-<h1>Welcome! ${name} and ${pass}</h1>
+<h1>Welcome! ${name}!</h1>
 </body>
 </html>
