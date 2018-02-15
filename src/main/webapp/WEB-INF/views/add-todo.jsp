@@ -23,7 +23,7 @@
 	<a href="/" class="navbar-brand">Brand</a>
 	<ul class="nav navbar-nav">
 		<li class="active"><a href="#">Home</a></li>
-		<li><a href="/todo.do">Todos</a></li>
+		<li><a href="/list-todo.do">Todos</a></li>
 		<li><a href="http://www.in28minutes.com">In28Minutes</a></li>
 	</ul>
 	<ul class="nav navbar-nav navbar-right">
@@ -32,16 +32,15 @@
 </nav>
 
 <div class="container">
-	<h1>Welcome ${name}</h1>
-	<p>Your Todo's are:</p>
-	<ol>
-		<c:forEach items="${todos}" var="todo">
-			<li>${todo.name} <a href="delete-todo.do?todo=${todo.name}">Delete</a></li>
-		</c:forEach>
-	</ol>
+	<h2>Your New Action item</h2>
 	<form action="/add-todo.do" method="post">
-		<input type="text" name="todo">
-		<input type="submit" value="Add">
+	<fieldset class="form-group">
+	<label for="todo">Description </label> <input class="form-control" type="text" name="todo">
+	</fieldset>
+	<fieldset class="form-group">
+	<label for="category">Category </label> <input class="form-control" type="text" name="category">
+	</fieldset>
+	<input class="btn btn-success" type="submit" value="Add">
 	</form>
 </div>
 
