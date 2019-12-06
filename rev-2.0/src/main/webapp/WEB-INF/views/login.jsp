@@ -7,6 +7,6 @@
 <title>Yahoo from JSP!</title>
 </head>
 <body>
-My Second page JSP!
+My Second page JSP! Mr(s). ${name}
 </body>
 </html>
