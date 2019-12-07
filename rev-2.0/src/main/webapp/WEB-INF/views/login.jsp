@@ -1,4 +1,3 @@
-<%@ page import="java.util.Date" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" %>
 <!DOCTYPE html>
@@ -8,11 +7,10 @@
 <title>Yahoo!!! From JSP</title>
 </head>
 <body>
-<%
-System.out.println(request.getParameter("name"));
-Date date = new Date();
-%>
-<div>Current date is <%= date %></div>
-My Second Page. Mr(s). ${name}
+<form action="login.do" method="post">
+Login: <input type="text" name="login">
+Senha: <input type="password" name="pass">
+<input type="submit" value="Entrar">
+</form>
 </body>
 </html>
