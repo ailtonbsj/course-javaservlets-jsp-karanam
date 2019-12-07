@@ -13,6 +13,7 @@ System.out.println(request.getParameter("name"));
 Date date = new Date();
 %>
 <h1>Welcome ${login}</h1>
-<p>Your pass is ${pass}</p>
+<p>Your todos are:</p>
+<p>${todos}</p>
 </body>
 </html>
